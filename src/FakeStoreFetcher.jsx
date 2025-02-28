@@ -13,7 +13,10 @@ const useFakeStore = () => {
         }
         return response.json();
       })
-      .then((response) => setFakeStoreData(response))
+      .then((response) => {
+        setFakeStoreData(response);
+        console.log(response);
+      })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
@@ -21,20 +24,20 @@ const useFakeStore = () => {
   return { fakeStoreData, error, loading };
 };
 
-const FakeStore = () => {
-  const { fakeStoreData, error, loading } = useFakeStore();
+// const FakeStore = () => {
+//   const { fakeStoreData, error, loading } = useFakeStore();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>A network error was encountered!</p>;
+//   if (loading) return <p>Loading...</p>;
+//   if (error) return <p>A network error was encountered!</p>;
 
-  return (
-    <div>
-      <h1>Merchandise</h1>
-      {fakeStoreData.map((item) => {
-        return <li key={item.id}>{item.title}</li>;
-      })}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <h1>Merchandise</h1>
+//       {fakeStoreData.map((item) => {
+//         return <li key={item.id}>{item.title}</li>;
+//       })}
+//     </div>
+//   );
+// };
 
-export default FakeStore;
+export default useFakeStore;

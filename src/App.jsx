@@ -1,11 +1,12 @@
 import "./App.css";
-import FakeStore from "./FakeStoreFetcher";
+import Catalog from "./Catalog";
+import Header from "./Header";
 
 function App() {
-
   return (
     <>
-      <FakeStore />
+      <Header />
+      <Catalog />
     </>
   );
 }
